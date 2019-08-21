@@ -16,6 +16,12 @@ uri TEXT NOT NULL,
 date INTEGER NOT NULL,
 status TEXT DEFAULT 'checked');'''.format(table_liked_video))
 
+idx_id = 0
+idx_title = 1
+idx_uri = 2
+idx_date = 3
+idx_status = 4
+
 
 def get_cursor():
     return cursor
@@ -32,9 +38,18 @@ def get_videos():
     return cursor.fetchall()
 
 
+def get_undownloaded_videos():
+    cursor.execute("SELECT * FROM {} WHERE status='checked' LIMIT 10".format(table_liked_video))
+    return cursor.fetchall()
+
+
 def get_id_by_uri(uri):
     cursor.execute("SELECT id FROM {} WHERE uri='{}'".format(table_liked_video, uri))
     return cursor.fetchone()
+
+
+def update_download_video(id):
+    cursor.execute("UPDATE {} SET status='downloaded' WHERE id={}".format(table_liked_video, id))
 
 
 def close():
