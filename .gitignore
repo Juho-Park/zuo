@@ -1,0 +1,5 @@
+music/mp3
+music/venv/
+music/liked_list.db
+music/__pycache__/
+music/.idea/
