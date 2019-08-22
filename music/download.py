@@ -12,3 +12,4 @@ for row in rows:
     utub.update_download_video(id)
     sleep(5)
 
+utub.close()

@@ -43,7 +43,7 @@ def get_videos():
 
 
 def get_undownloaded_videos():
-    cursor.execute("SELECT * FROM {} WHERE status='checked' LIMIT 10".format(table_liked_video))
+    cursor.execute("SELECT * FROM {} WHERE status='checked' LIMIT 2".format(table_liked_video))
     return cursor.fetchall()
 
 
@@ -53,7 +53,7 @@ def get_id_by_uri(uri):
 
 
 def update_download_video(id):
-    cursor.execute("UPDATE {} SET status='{}' WHERE id='{}'".format(table_liked_video,stat_downloaded , id))
+    cursor.execute("UPDATE {} SET status='{}' WHERE id={}".format(table_liked_video, stat_downloaded, id))
     print('update status id: {}'.format(id))
 
 
