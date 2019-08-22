@@ -14,13 +14,16 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 title TEXT NOT NULL,
 uri TEXT NOT NULL,
 date INTEGER NOT NULL,
-status TEXT DEFAULT 'checked');'''.format(table_liked_video))
+status TEXT DEFAULT '{}');'''.format(table_liked_video, stat_check))
 
 idx_id = 0
 idx_title = 1
 idx_uri = 2
 idx_date = 3
 idx_status = 4
+
+stat_check = 'checked'
+stat_downloaded = 'downloaded'
 
 
 def get_cursor():
@@ -49,7 +52,8 @@ def get_id_by_uri(uri):
 
 
 def update_download_video(id):
-    cursor.execute("UPDATE {} SET status='downloaded' WHERE id={}".format(table_liked_video, id))
+    cursor.execute("UPDATE {} SET status='{}' WHERE id='{}'".format(table_liked_video,stat_downloaded , id))
+    print('update status id: {}'.format(id))
 
 
 def close():
