@@ -14,10 +14,13 @@ idx_status = 4
 stat_check = 'checked'
 stat_downloaded = 'downloaded'
 
-db_path = 'liked_list.db'
+file_db = 'liked_list.db'
+path_mp3 = 'mp3/'
+path_dl = '{base}unclassified/'.format(base=path_mp3)
+
 table_liked_video = 'LikedVideo'
 
-conn = sqlite3.connect(db_path)
+conn = sqlite3.connect(file_db)
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS {}(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,7 +46,7 @@ def get_videos():
 
 
 def get_undownloaded_videos():
-    cursor.execute("SELECT * FROM {} WHERE status='checked' LIMIT 2".format(table_liked_video))
+    cursor.execute("SELECT * FROM {} WHERE status='checked' LIMIT 10".format(table_liked_video))
     return cursor.fetchall()
 
 
