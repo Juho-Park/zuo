@@ -4,6 +4,16 @@ import sqlite3
 
 date = int(datetime.now().strftime('%Y%m%d'))
 
+
+idx_id = 0
+idx_title = 1
+idx_uri = 2
+idx_date = 3
+idx_status = 4
+
+stat_check = 'checked'
+stat_downloaded = 'downloaded'
+
 db_path = 'liked_list.db'
 table_liked_video = 'LikedVideo'
 
@@ -15,15 +25,6 @@ title TEXT NOT NULL,
 uri TEXT NOT NULL,
 date INTEGER NOT NULL,
 status TEXT DEFAULT '{}');'''.format(table_liked_video, stat_check))
-
-idx_id = 0
-idx_title = 1
-idx_uri = 2
-idx_date = 3
-idx_status = 4
-
-stat_check = 'checked'
-stat_downloaded = 'downloaded'
 
 
 def get_cursor():
