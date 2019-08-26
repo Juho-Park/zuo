@@ -16,7 +16,9 @@ stat_downloaded = 'downloaded'
 
 file_db = 'liked_list.db'
 path_mp3 = 'mp3/'
-path_dl = '{base}unclassified/'.format(base=path_mp3)
+path_unclassified = '{base}unclassified/'.format(base=path_mp3)
+path_classified = '{base}classified/'.format(base=path_mp3)
+
 
 table_liked_video = 'LikedVideo'
 
