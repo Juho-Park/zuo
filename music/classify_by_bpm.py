@@ -1,6 +1,7 @@
 import os
 import re
 import subprocess as sp
+from shutil import copyfile
 
 import DAO_youtube as utub
 
@@ -19,6 +20,5 @@ for f in files:
     bpm = round(float(result.group()))
     bpm_f = '{bpm}_{file}'.format(bpm=bpm, file=f)
     file_result = '{path}{file}'.format(path=path_result, file=bpm_f)
-    os.rename('{}'.format(file_origin),
-              '{}'.format(file_result))
+    copyfile(file_origin, file_result)
     print('move {origin}\n\t\tto {result}'.format(origin=file_origin, result=file_result))
